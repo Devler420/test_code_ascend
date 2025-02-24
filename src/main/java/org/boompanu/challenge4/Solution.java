@@ -11,10 +11,20 @@ Output: true
 */
 
 
+import java.util.Arrays;
+
 public class Solution {
     public boolean isAnagram(String s, String t) {
-        // Your code here
-        return true;
+        if (s.length() != t.length()) {
+            return false;
+        }
+        char[] charArrayInput1 = s.toCharArray();
+        char[] charArrayInput2 = t.toCharArray();
+        Arrays.sort(charArrayInput1);
+        Arrays.sort(charArrayInput2);
+        String result1 = Arrays.toString(charArrayInput1);
+        String result2 = Arrays.toString(charArrayInput2);
+        return result1.equals(result2);
     }
 
     public static void main(String[] args) {

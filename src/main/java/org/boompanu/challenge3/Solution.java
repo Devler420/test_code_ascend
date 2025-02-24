@@ -13,8 +13,25 @@ import java.util.*;
 
 public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        // Your code here
-        return List.of(List.of(""));
+        List<List<String>> result = new ArrayList<>();
+        HashMap<String, List<String>> groupAnagramMap = new HashMap<>();
+
+        for (String tempStr : strs) {
+            char[] tempChar = tempStr.toCharArray();
+            Arrays.sort(tempChar);
+            String anagram = new String(tempChar);
+            if (!groupAnagramMap.containsKey(anagram)) {
+                groupAnagramMap.put(anagram, new ArrayList<>(List.of(tempStr)));
+            } else {
+                groupAnagramMap.get(anagram).add(tempStr);
+            }
+        }
+
+        groupAnagramMap.forEach((key, value) -> {
+            result.add(value);
+        });
+
+        return result;
     }
 
     public static void main(String[] args) {
